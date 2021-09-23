@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png"> 
+  <joke-item :currentJoke="jokes.goodJoke"></joke-item>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import JokeItem from './components/joke/JokeItem.vue'
 export default {
+  components: { JokeItem },
   name: 'App',
-  components: {
-    HelloWorld
+  computed: {
+    jokes(){
+      return this.$store.getters['joke/jokes']
+    }
   }
 }
 </script>
